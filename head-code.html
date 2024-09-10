@@ -1,0 +1,30 @@
+<!-- Include this script in the <head> or just before the closing </body> tag of your webpage -->
+<script>
+  (function() {
+    // Idle time in milliseconds (e.g., 5 minutes)
+    var idleTime = 5 * 60 * 1000; 
+    var idleTimer;
+
+    // URL of the low-CO₂ page
+    var redirectURL = 'low-co2-page.html';
+
+    // Reset the idle timer on user interaction
+    function resetTimer() {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(goIdle, idleTime);
+    }
+
+    // Redirect to the low-CO₂ page
+    function goIdle() {
+      window.location.href = redirectURL;
+    }
+
+    // Events to detect user activity
+    ['mousemove', 'keydown', 'mousedown', 'touchstart', 'scroll'].forEach(function(evt) {
+      document.addEventListener(evt, resetTimer, false);
+    });
+
+    // Start the timer when the page loads
+    resetTimer();
+  })();
+</script>
