@@ -3,28 +3,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <title>Eco Mode Activated</title>
   <style>
+    :root { color-scheme: light dark; }
     body {
-      background-color: #f0f0f0;
-      color: #333;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: grid;
+      place-items: center;
+      min-height: 100dvh;
+      padding: 2rem;
+      background: Canvas;
+      color: CanvasText;
+    }
+    main {
+      max-width: 40rem;
+      width: 100%;
       text-align: center;
-      padding-top: 20%;
     }
-    p {
-      font-size: 1.2em;
-    }
-    a {
-      color: #007acc;
+    h1 { font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem); margin: 0 0 .5rem; }
+    p { margin: 0 0 1rem; font-size: 1.0625rem; }
+    .actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    a, button {
+      appearance: none;
+      border: 1px solid ButtonBorder;
+      background: ButtonFace;
+      color: ButtonText;
+      padding: .6rem 1rem;
+      border-radius: .5rem;
       text-decoration: none;
+      cursor: pointer;
+    }
+    a:focus, button:focus { outline: 2px solid Highlight; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
     }
   </style>
+  <script>
+    // Prevent redirect loop by marking this page as exempt
+    (function(){
+      var s=document.createElement('script');
+      s.src='idlescript.js';
+      s.setAttribute('data-exempt','');
+      document.head.appendChild(s);
+    })();
+  </script>
+  <link rel="preload" as="script" href="idlescript.js">
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Minimal eco mode page to reduce energy usage when idle.">
+  <link rel="icon" href="data:,">
+  <meta name="theme-color" content="#0c7">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-title" content="Eco Mode">
+  <meta name="application-name" content="Eco Mode">
+  <meta name="msapplication-TileColor" content="#0c7">
+  <meta name="msapplication-config" content="none">
+  <meta name="generator" content="Idle Carbon Reducer">
+  <meta name="og:title" content="Eco Mode Activated">
+  <meta name="og:description" content="Minimal page to reduce energy usage when idle.">
+  <meta name="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Eco Mode Activated">
+  <meta name="twitter:description" content="Minimal page to reduce energy usage when idle.">
+  <meta name="ui-version" content="2">
+  <meta name="icr" content="true">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'unsafe-inline' 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
 </head>
 <body>
-  <h1>You've Entered Eco Mode 🌿</h1>
-  <p>We noticed you were inactive, so we've minimized resource usage to reduce CO₂ emissions.</p>
-  <p>Click below to return:</p>
-  <a href="javascript:history.back()">Go Back to Previous Page</a>
+  <main>
+    <h1>Eco mode is on 🌿</h1>
+    <p>You're idle, so we paused heavy content to save energy.</p>
+    <div class="actions">
+      <a href="javascript:history.back()" aria-label="Go back to previous page">Go back</a>
+      <a href="/" rel="home" aria-label="Return to home">Home</a>
+    </div>
+  </main>
 </body>
 </html>
